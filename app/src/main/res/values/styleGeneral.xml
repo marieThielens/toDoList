@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<!--  Titre  -->
+    <style name="titre_general_style" >
+        <item name="android:textSize">@dimen/taille_titre</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+</resources>
+
+
