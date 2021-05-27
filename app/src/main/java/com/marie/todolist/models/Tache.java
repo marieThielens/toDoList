@@ -7,13 +7,15 @@ public class Tache {
         FAIBLE
     };
 
+    private int id;
     private String titreTache;
     private String dateCreation;
     private Importance importance;
     private boolean estFini;
 
     // constructeur
-    public Tache(String titreTache, String dateCreation, Importance importance, boolean estFini) {
+    public Tache(int id, String titreTache, String dateCreation, Importance importance, boolean estFini) {
+        this.id = id;
         this.titreTache = titreTache;
         this.dateCreation = dateCreation;
         this.importance = importance;
@@ -28,6 +30,9 @@ public class Tache {
     public void setImportance(Importance importance) { this.importance = importance; }
     public boolean isEstFini() { return estFini; }
     public void setEstFini(boolean estFini) { this.estFini = estFini; }
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
+
 
     @Override
     public String toString() {
