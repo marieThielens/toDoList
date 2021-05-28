@@ -1,9 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AjouterActivity">
+    tools:context=".AjouterActivity"
+    android:orientation="vertical"
+    >
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/todo_item_titreG"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Todo App"
+        style="@style/titre_general_style"
+         />
+    <TextView
+        android:id="@+id/texte_ajouter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ajouter une nouvelle tache"
+        android:textSize="25dp"
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="15dp"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
+        <TextView
+            android:id="@+id/texte_ajouter_nom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nom :"
+            android:textSize="@dimen/taille_texte_normal"
+            android:layout_marginRight="15dp"/>
+        <EditText
+            android:id="@+id/input_nom_ajouter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Le nom de votre tache" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="15dp">
+        <TextView
+            android:id="@+id/texte_ajouter_priorite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Priorite :"
+            android:textSize="@dimen/taille_texte_normal"
+            android:layout_marginRight="15dp"/>
+        <EditText
+            android:id="@+id/input_priorite_ajouter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Haute" />
+    </LinearLayout>
+    <Button
+        android:id="@+id/btn_valider_tache"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Valider"
+        android:layout_gravity="center_horizontal"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom|end">
+        <Button
+            android:id="@+id/btn_retour_accueil"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:text="X"
+            android:background="@drawable/btn_rond"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
+            />
+    </RelativeLayout>
+
+</LinearLayout>

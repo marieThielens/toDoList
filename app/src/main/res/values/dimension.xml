@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="taille_titre">35dp</dimen>
+    <dimen name="taille_texte_normal">17dp</dimen>
 </resources>

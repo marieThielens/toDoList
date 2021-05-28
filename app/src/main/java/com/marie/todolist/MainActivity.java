@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 
 import com.marie.todolist.adapters.TacheAdapter;
 import com.marie.todolist.models.Tache;
@@ -14,11 +16,14 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView monRecycler;
+    private Button btnAjouterActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Partie recycler et data ............................
 
         // Créer mon tableau copie de tache
         ArrayList<Tache> maTache = new ArrayList<>();
@@ -39,6 +44,15 @@ public class MainActivity extends AppCompatActivity {
 
         TacheAdapter adapter = new TacheAdapter(maTache); // le tableau ma tache défini plus haut
         monRecycler.setAdapter(adapter);
+
+        // Partie Activity .................................
+
+        btnAjouterActivity = findViewById(R.id.btn_ajout); // liaison avec le layout
+        btnAjouterActivity.setOnClickListener(v -> { // au clique
+            Intent intent = new Intent(getApplicationContext(), AjouterActivity.class );
+            startActivity(intent);
+        });
+
 
     }
 

@@ -13,7 +13,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Todo App"
-        style="@style/titre_general_style"/>
+        style="@style/titre_general_style"
+        />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
