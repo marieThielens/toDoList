@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 public class TacheAdapter extends RecyclerView.Adapter<TacheAdapter.ViewHolder> {
 
-    private ArrayList<Tache> tacheData; // Je crée un tableau avec toutes mes taches
+    private ArrayList<Tache> taches; // Je crée un tableau avec toutes mes taches
     private Context context; // Le programme dans lequel tu es
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -46,8 +46,8 @@ public class TacheAdapter extends RecyclerView.Adapter<TacheAdapter.ViewHolder> 
     private RecyclerView monRecycler; // Je definis la variable pour mon recycler
 
     // Constructeur pour créer l'adapter avec les données
-    public TacheAdapter(ArrayList<Tache> mesTaches) { // je cree
-       this.tacheData = mesTaches; // mon tableau TacheData recupère le tableau mesTaches
+    public TacheAdapter(ArrayList<Tache> taches) { // je cree
+       this.taches = taches; // mon tableau TacheData recupère le tableau mesTaches
     }
     // click droit sur la premiere ligne, implements methode
     // Méthode qui permet de créer les vues contenues dans la liste utilisé par le LayoutManager
@@ -66,7 +66,7 @@ public class TacheAdapter extends RecyclerView.Adapter<TacheAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull TacheAdapter.ViewHolder holder, int position) {
         // Récupération des données a utiliser. Tableau tache
-        Tache cible = tacheData.get(position); // la position de ma data
+        Tache cible = taches.get(position); // la position de ma data
 
         // Mise à jour de la vue via le ViewHolder
         holder.getTvTitreItem().setText(cible.getTitreTache()); //  1. get qui vient de public ViewHolder(R.id.) 2. de mon constructeur
@@ -75,7 +75,7 @@ public class TacheAdapter extends RecyclerView.Adapter<TacheAdapter.ViewHolder> 
     }
     @Override
     public int getItemCount() {
-        return tacheData.size();
+        return taches.size();
     }
 
 }

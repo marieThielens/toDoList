@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -23,14 +24,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         // Partie recycler et data ............................
 
         // Créer mon tableau copie de tache
-        ArrayList<Tache> maTache = new ArrayList<>();
+        ArrayList<Tache> taches = new ArrayList<>();
 
         // Insérer des data dans mon tableau
-        maTache.add(new Tache(1,"Faire les courses","26/09/1982", Tache.Importance.IMPORTANT, false));
-        maTache.add(new Tache(2,"Aller courir","25/09/1982", Tache.Importance.FAIBLE, true));
+        taches.add(new Tache(1,"Faire les courses","26/09/1982", "IMPORTANT", 2));
+        taches.add(new Tache(2,"Aller courir","25/09/1982", "Faible", 1));
 
 
         // Liaison avec le Layout
@@ -42,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         // va permettre de définir le type de layout de mon recycler
         monRecycler.setLayoutManager(layoutManager);
 
-        TacheAdapter adapter = new TacheAdapter(maTache); // le tableau ma tache défini plus haut
+        TacheAdapter adapter = new TacheAdapter(taches); // le tableau ma tache défini plus haut
         monRecycler.setAdapter(adapter);
 
         // Partie Activity .................................
