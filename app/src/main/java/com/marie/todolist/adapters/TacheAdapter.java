@@ -78,4 +78,6 @@ public class TacheAdapter extends RecyclerView.Adapter<TacheAdapter.ViewHolder> 
         return taches.size();
     }
 
+
+
 }

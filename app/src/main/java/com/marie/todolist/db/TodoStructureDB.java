@@ -45,11 +45,11 @@ public class TodoStructureDB {
     // Centraliser nos interaction
     // curseurs : permet de parcourir les lignes de résultat d'une requete SELECT
     private Tache produireCurseur(Cursor c) {
-       long id = c.getLong(c.getColumnIndex(DbRequete.TodoSql.COLUMN_ID));
-       String titre = c.getString(c.getColumnIndex(DbRequete.TodoSql.COLUMN_TITRE));
-       String date = c.getString(c.getColumnIndex(DbRequete.TodoSql.COLUMN_DATE));
-       String importance = c.getString(c.getColumnIndex(DbRequete.TodoSql.COLUMN_IMPORTANCE));
-       int finit = c.getInt(c.getColumnIndex(DbRequete.TodoSql.COLUMN_FINI));
+       long id = c.getLong(c.getColumnIndex(DbRequete.Tache.COLUMN_ID));
+       String titre = c.getString(c.getColumnIndex(DbRequete.Tache.COLUMN_TITRE));
+       String date = c.getString(c.getColumnIndex(DbRequete.Tache.COLUMN_DATE));
+       String importance = c.getString(c.getColumnIndex(DbRequete.Tache.COLUMN_IMPORTANCE));
+       int finit = c.getInt(c.getColumnIndex(DbRequete.Tache.COLUMN_FINI));
 
        return new Tache(id, titre, date, importance, finit);
     }
@@ -58,23 +58,23 @@ public class TodoStructureDB {
     // key = nom de la colonne de la db, value = la valeur qui se trouve dans la colonne
     private ContentValues creerCV(Tache tache) {
         ContentValues cv = new ContentValues();
-        cv.put(DbRequete.TodoSql.COLUMN_TITRE, tache.getTitreTache()); // tache = constructeur
-        cv.put(DbRequete.TodoSql.COLUMN_DATE, tache.getDateCreation());
-        cv.put(DbRequete.TodoSql.COLUMN_IMPORTANCE, tache.getImportance());
-        cv.put(DbRequete.TodoSql.COLUMN_FINI, tache.getFinit());
+        cv.put(DbRequete.Tache.COLUMN_TITRE, tache.getTitreTache()); // tache = constructeur
+        cv.put(DbRequete.Tache.COLUMN_DATE, tache.getDateCreation());
+        cv.put(DbRequete.Tache.COLUMN_IMPORTANCE, tache.getImportance());
+        cv.put(DbRequete.Tache.COLUMN_FINI, tache.getFinit());
 
         return cv;
     }
     // create
     public long insert(Tache tache){ // tache vient de models (le constructeur )
         ContentValues cv = creerCV(tache); // créerCV(tache)
-        return db.insert(DbRequete.TodoSql.TABLE_NAME, null, cv);
+        return db.insert(DbRequete.Tache.TABLE_NAME, null, cv);
     }
     // Read
     public Tache getById(long id) {
-        Cursor cursor = db.query(DbRequete.TodoSql.TABLE_NAME,
+        Cursor cursor = db.query(DbRequete.Tache.TABLE_NAME,
                 null, // Toutes les colonnes
-                DbRequete.TodoSql.COLUMN_ID + " = ?",
+                DbRequete.Tache.COLUMN_ID + " = ?",
                 new String[]{ String.valueOf(id)},
                 null,
                 null,
@@ -89,7 +89,7 @@ public class TodoStructureDB {
     }
 
     public List<Tache> getAll(){
-        Cursor cursor = db.query(DbRequete.TodoSql.TABLE_NAME, null, null, null, null, null, null);
+        Cursor cursor = db.query(DbRequete.Tache.TABLE_NAME, null, null, null, null, null, null);
 
         List<Tache> taches = new ArrayList<>();
         if(cursor.getCount() == 0) { return taches; }
@@ -103,12 +103,21 @@ public class TodoStructureDB {
         }
         return taches;
     }
-
-
-
-    // crer ma db
-    public void onCreate(SQLiteDatabase db){
-            db.execSQL(DbRequete.TodoSql.MES_REQUETES);
+    // update
+    public boolean update(long id, Tache tache) {
+        ContentValues cv = creerCV(tache);
+        // 2. ,Where table, where string argument
+        int nbRow = db.update(DbRequete.Tache.TABLE_NAME, cv,
+                DbRequete.Tache.COLUMN_ID + " = ?",
+                new String[]{ String.valueOf(id) });
+        return nbRow == 1;
     }
+    // Delete
+    public boolean delete(long id) {
+        int nbRow = db.delete( DbRequete.Tache.TABLE_NAME,
+                DbRequete.Tache.COLUMN_ID + " = ?",
+                new String[]{ String.valueOf(id) });
 
+        return nbRow == 1;
+    }
 }

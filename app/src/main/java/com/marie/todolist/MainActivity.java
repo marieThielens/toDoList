@@ -1,15 +1,20 @@
 package com.marie.todolist;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.widget.Button;
 
 import com.marie.todolist.adapters.TacheAdapter;
+import com.marie.todolist.db.DbHelper;
+import com.marie.todolist.db.TodoStructureDB;
 import com.marie.todolist.models.Tache;
 
 import java.util.ArrayList;
@@ -25,14 +30,21 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
+        // base de donnée
+        DbHelper db = new DbHelper(this);
+        // db.onCreate();
+
+       // TacheAdapter t = new TacheAdapter(getApplicationContext());
+        //t.insert(new Tache("Faire les courses", "13:01:2021", "Important", 1));
+        //t.close();
         // Partie recycler et data ............................
 
         // Créer mon tableau copie de tache
         ArrayList<Tache> taches = new ArrayList<>();
 
         // Insérer des data dans mon tableau
-        taches.add(new Tache(1,"Faire les courses","26/09/1982", "IMPORTANT", 2));
-        taches.add(new Tache(2,"Aller courir","25/09/1982", "Faible", 1));
+      //  taches.add(new Tache(1,"Faire les courses","26/09/1982", "IMPORTANT", 2));
+      //  taches.add(new Tache(2,"Aller courir","25/09/1982", "Faible", 1));
 
 
         // Liaison avec le Layout

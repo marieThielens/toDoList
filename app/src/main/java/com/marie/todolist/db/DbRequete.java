@@ -5,7 +5,7 @@ public class DbRequete {
     public static final String DB_NAME = "todo_list"; // le nom de la db
     public static final int DB_VERSION = 1; // la version de la db
 
-    public static class TodoSql {
+    public static class Tache {
         // La classe static qui contient les infos de la table (le nom des colonnes .. )
         public static final String TABLE_NAME = "todo"; // nom du tableau
         public static final String COLUMN_ID = "_id"; // nom des colonnes
@@ -16,14 +16,14 @@ public class DbRequete {
 
     // requêtes DDL pour créer le tableau et ses colonnes
     public static final String MES_REQUETES =
-            "CREATE TABLE" + TodoSql.TABLE_NAME + " ( "
-            + TodoSql.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-            + TodoSql.COLUMN_TITRE + " TEXT, "
-            + TodoSql.COLUMN_DATE + " TEXT, "
-            + TodoSql.COLUMN_IMPORTANCE + " TEXT, "
-            + TodoSql.COLUMN_FINI + " INTEGER "
+            "CREATE TABLE" + Tache.TABLE_NAME + " ( "
+            + Tache.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + Tache.COLUMN_TITRE + " TEXT, "
+            + Tache.COLUMN_DATE + " TEXT, "
+            + Tache.COLUMN_IMPORTANCE + " TEXT, "
+            + Tache.COLUMN_FINI + " INTEGER "
             + ");";
 
-    public static final String REQUEST_DELETE = "DROP TABLE " + TodoSql.TABLE_NAME + ";";
+    public static final String REQUEST_DELETE = "DROP TABLE " + Tache.TABLE_NAME + ";";
     }
 }
