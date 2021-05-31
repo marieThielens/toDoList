@@ -3,10 +3,12 @@ package com.marie.todolist;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.marie.todolist.db.DbRequete;
 import com.marie.todolist.db.TodoStructureDB;
 import com.marie.todolist.models.Tache;
 
@@ -29,7 +31,8 @@ public class AjouterActivity extends AppCompatActivity {
         btnValiderTache.setOnClickListener(v -> {
 
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(intent);
+
+            finish();
         });
 
 

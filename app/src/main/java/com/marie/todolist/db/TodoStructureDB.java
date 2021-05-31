@@ -58,6 +58,7 @@ public class TodoStructureDB {
     // key = nom de la colonne de la db, value = la valeur qui se trouve dans la colonne
     private ContentValues creerCV(Tache tache) {
         ContentValues cv = new ContentValues();
+        // Nom de la colonne, valeur à attribuer à la colonne
         cv.put(DbRequete.Tache.COLUMN_TITRE, tache.getTitreTache()); // tache = constructeur
         cv.put(DbRequete.Tache.COLUMN_DATE, tache.getDateCreation());
         cv.put(DbRequete.Tache.COLUMN_IMPORTANCE, tache.getImportance());
@@ -67,7 +68,9 @@ public class TodoStructureDB {
     }
     // create
     public long insert(Tache tache){ // tache vient de models (le constructeur )
-        ContentValues cv = creerCV(tache); // créerCV(tache)
+        ContentValues cv = creerCV(tache); //
+//        cv.put("id", 1);
+//        cv.put("titre", "Aller manger");
         return db.insert(DbRequete.Tache.TABLE_NAME, null, cv);
     }
     // Read
@@ -100,6 +103,8 @@ public class TodoStructureDB {
             taches.add(t);
 
             cursor.moveToNext();
+
+
         }
         return taches;
     }

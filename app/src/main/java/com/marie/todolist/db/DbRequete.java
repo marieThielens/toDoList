@@ -1,5 +1,8 @@
 package com.marie.todolist.db;
 
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+
 public class DbRequete {
 
     public static final String DB_NAME = "todo_list"; // le nom de la db
@@ -16,7 +19,7 @@ public class DbRequete {
 
     // requêtes DDL pour créer le tableau et ses colonnes
     public static final String MES_REQUETES =
-            "CREATE TABLE" + Tache.TABLE_NAME + " ( "
+            "CREATE TABLE " + Tache.TABLE_NAME + " ( "
             + Tache.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + Tache.COLUMN_TITRE + " TEXT, "
             + Tache.COLUMN_DATE + " TEXT, "
@@ -25,5 +28,10 @@ public class DbRequete {
             + ");";
 
     public static final String REQUEST_DELETE = "DROP TABLE " + Tache.TABLE_NAME + ";";
+
+        private DbHelper dbHelper;
+        private Context context;
+        private SQLiteDatabase db;
     }
 }
+
