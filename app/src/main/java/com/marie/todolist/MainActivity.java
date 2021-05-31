@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         taches.add(new Tache(1,"Faire les courses","26/09/1982", "IMPORTANT", 2));
         taches.add(new Tache(2,"Aller courir","25/09/1982", "Faible", 1));
 
-        TodoStructureDB t = new TodoStructureDB(this); // gestionnaire de la table Tache
+        TodoStructureDB t = new TodoStructureDB(this);
         t.openReadable();
         t.openWritable();
         t.getAll();
