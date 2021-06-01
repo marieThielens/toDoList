@@ -41,7 +41,7 @@
         android:id="@+id/todo_item_btn_fini"
         android:layout_width="60sp"
         android:layout_height="wrap_content"
-        android:text="Fait"
+        android:text="@string/btn_todo_item_fait"
         android:layout_weight="1"
         android:backgroundTint="@color/vert_btn"
         />

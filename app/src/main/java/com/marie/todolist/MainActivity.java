@@ -1,16 +1,21 @@
 package com.marie.todolist;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.marie.todolist.adapters.TacheAdapter;
 import com.marie.todolist.db.DbHelper;
@@ -78,13 +83,42 @@ public class MainActivity extends AppCompatActivity {
 
         btnToutSupprimer = findViewById(R.id.btn_supprimer);
         btnToutSupprimer.setOnClickListener(v -> {
-            // todoDAO.delete();
+            ouvrirDialogue();
         });
 
 
     }
     private void fermerApplication() {
         // TODO à finir
+    }
+
+    // Boite de dialogue.........................
+
+    private void ouvrirDialogue(){
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this); // context
+
+        // Empecher de pouvoir appuyer sur la touche retour
+        builder.setCancelable(false);
+
+        // envoyer le message title
+        builder.setTitle("Etes vous sur ?");
+        builder.setPositiveButton("Supprimer", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                deleteDatabase(DbRequete.DB_NAME);
+            }
+        });
+        builder.setNegativeButton("Non", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            // Il ne se passe rien
+            }
+        })
+        .show();
+
+
+
     }
 
 }
