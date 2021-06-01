@@ -69,8 +69,6 @@ public class TodoStructureDB {
     // create
     public long insert(Tache tache){ // tache vient de models (le constructeur )
         ContentValues cv = creerCV(tache); //
-//        cv.put("id", 1);
-//        cv.put("titre", "Aller manger");
         return db.insert(DbRequete.Tache.TABLE_NAME, null, cv);
     }
     // Read

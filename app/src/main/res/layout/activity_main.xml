@@ -12,10 +12,10 @@
         android:id="@+id/todo_item_titreG"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Todo App"
+        android:text="@string/todo_app_titre"
         style="@style/titre_general_style"
         />
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -24,13 +24,22 @@
             android:id="@+id/btn_ajout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ajouter une tache" />
+            android:text="Ajouter une tache"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            />
+       <View
+           android:layout_width="@dimen/marge_bouton"
+           android:layout_height="0dp" />
         <Button
             android:id="@+id/btn_supprimer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tout supprimer" />
-    </LinearLayout>
+            android:text="Tout supprimer"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            />
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/general_titre_taches"

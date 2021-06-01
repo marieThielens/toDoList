@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">ToDoList</string>
+    <string name="todo_app_titre">Todo App</string>
+    <string name="ajouter_nouvelle_tache">Ajouter une nouvelle tache</string>
+    <string name="nom_ajouter_tache">Nom :</string>
+    <string name="input_nom_hint">Le nom de votre tache</string>
+    <string name="priorite_texte_ajout">Priorite :</string>
+    <string name="btn_valider_ajout">Valider</string>
 </resources>

@@ -14,10 +14,11 @@ import com.marie.todolist.R;
 import com.marie.todolist.models.Tache;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class TacheAdapter extends RecyclerView.Adapter<TacheAdapter.ViewHolder> {
 
-    private ArrayList<Tache> taches; // Je crée un tableau avec toutes mes taches
+    private List<Tache> taches; // Je crée un tableau avec toutes mes taches
     private Context context; // Le programme dans lequel tu es
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -46,7 +47,7 @@ public class TacheAdapter extends RecyclerView.Adapter<TacheAdapter.ViewHolder> 
     private RecyclerView monRecycler; // Je definis la variable pour mon recycler
 
     // Constructeur pour créer l'adapter avec les données
-    public TacheAdapter(ArrayList<Tache> taches) { // je cree
+    public TacheAdapter(List<Tache> taches) { // je cree
        this.taches = taches; // mon tableau TacheData recupère le tableau mesTaches
     }
     // click droit sur la premiere ligne, implements methode

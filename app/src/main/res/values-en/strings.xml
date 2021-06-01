@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ToDoList</string>
+    <string name="todo_app_titre">My ToDo List</string>
+    <string name="ajouter_nouvelle_tache">Add task</string>
+    <string name="nom_ajouter_tache">Name :</string>
+    <string name="input_nom_hint">The task\'s name </string>
+    <string name="priorite_texte_ajout">Priority :</string>
+    <string name="btn_valider_ajout">Add</string>
+</resources>

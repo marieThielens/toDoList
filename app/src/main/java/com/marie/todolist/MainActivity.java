@@ -19,39 +19,42 @@ import com.marie.todolist.db.TodoStructureDB;
 import com.marie.todolist.models.Tache;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView monRecycler;
-    private Button btnAjouterActivity;
+    private Button btnAjouterActivity, btnToutSupprimer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Partie recycler et data ............................
 
-        // Créer mon tableau copie de tache
-        ArrayList<Tache> taches = new ArrayList<>();
+        // Base de donnée .......................
+        // Initialisation du DAO pour travailler avec des produits
+        TodoStructureDB todoDAO = new TodoStructureDB(getApplicationContext());
 
-        // Insérer des data dans mon tableau
-        taches.add(new Tache(1,"Faire les courses","26/09/1982", "IMPORTANT", 2));
-        taches.add(new Tache(2,"Aller courir","25/09/1982", "Faible", 1));
+        // Création d'une tache. tache vient de models
+        Tache t1 = new Tache("Faire les courses","26/09/1982", "IMPORTANT", 2);
 
-        TodoStructureDB t = new TodoStructureDB(this);
-        t.openReadable();
-        t.openWritable();
-        t.getAll();
+        // Ouvrir en ecriture
+        todoDAO.openWritable();
+        long id = todoDAO.insert(t1);
+        todoDAO.close();
 
+        // Lecture de la db
+        todoDAO.openReadable();
+        List<Tache> taches =  todoDAO.getAll();
+        todoDAO.close();
 
+        // Lecture du produit avec l'id de valeur 1
+        todoDAO.openReadable(); // méthode crée dans TodoStructure
+        Tache t2 = todoDAO.getById(1);
+        todoDAO.close();
 
-        // insertion.
-       //  t.insert(new Tache(0,"Faire les courses","26/09/1982", "IMPORTANT", 2));
-
-
-
-
+        // RecyclerView ....................................
         // Liaison avec le Layout
         monRecycler = findViewById(R.id.rv_toDo); // id de mon recycler dans activity_main
         monRecycler.setHasFixedSize(false); // Si des éléments sont rajouté ou enlevé, la modification du contenu de l'adapteur ne modifie ni sa hauteur ni sa largeur
@@ -70,9 +73,18 @@ public class MainActivity extends AppCompatActivity {
         btnAjouterActivity.setOnClickListener(v -> { // au clique
             Intent intent = new Intent(getApplicationContext(), AjouterActivity.class );
             startActivity(intent);
+            fermerApplication(); // Sortir de l'app si l'user clique sur la fleche dans l'acitvité suivante
+        });
+
+        btnToutSupprimer = findViewById(R.id.btn_supprimer);
+        btnToutSupprimer.setOnClickListener(v -> {
+            // todoDAO.delete();
         });
 
 
+    }
+    private void fermerApplication() {
+        // TODO à finir
     }
 
 }
