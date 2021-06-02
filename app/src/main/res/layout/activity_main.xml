@@ -47,6 +47,8 @@
         android:layout_height="wrap_content"
         android:text="Liste des taches"
         android:textSize="25dp"/>
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_toDo"
         android:layout_width="match_parent"
