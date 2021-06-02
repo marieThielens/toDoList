@@ -7,4 +7,5 @@
     <string name="priorite_texte_ajout">Priorite :</string>
     <string name="btn_valider_ajout">Valider</string>
     <string name="btn_todo_item_fait">Fait</string>
+    <string name="date_limite">Date Limite</string>
 </resources>
